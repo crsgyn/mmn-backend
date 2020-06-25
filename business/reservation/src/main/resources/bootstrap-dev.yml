@@ -1,0 +1,26 @@
+server:
+  port: 8190
+
+reservation.sor_url: "https://api.saveonuat.com"
+
+# Disable Hystrix timeout globally (for all services)
+hystrix.command.default.execution.timeout.enabled: false
+
+# Increase the Hystrix timeout to 60s (globally)
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+
+feign.client.config.default.connectTimeout: 160000000
+feign.client.config.default.readTimeout: 160000000
+
+spring:
+  application:
+    name: ${MMN_BUSINESS_RESERVATION_NAME:business-reservation-service}
+
+  cloud:
+    config:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
+

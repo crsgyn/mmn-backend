@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ${MMN_CORE_GATEWAY_NAME}
+
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      uri: "http://${MMN_CORE_CONFIG_HOST:localhost}:${MMN_CORE_CONFIG_PORT:8081}"
+      fail-fast: true
+      username: ${MMN_CORE_CONFIG_USER:user}
+      password: ${MMN_CORE_CONFIG_PASSWORD:Password1234}
+
+  security:
+    user:
+      name: "${TRAVINED_SECURITY_NAME:travinedGatewayAdmin}"
+      password: "${TRAVINED_SECURITY_PASSWORD:trav2020inedAdmin!#1234}"
+
+server:
+  ssl:
+    key-store-type: "${TRAVINED_KEYSTORETYPE:PKCS12}"
+    key-store:  "${TRAVINED_KEYSTORE:classpath:keystore/travined_gateway.p12}"
+    key-store-password: "${TRAVINED_KEYSTOREPASSWORD:Travined1234}"
+    key-alias:  "${TRAVINED_KEYALIAS:travined_gateway}"

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: ${MMN_BUSINESS_MAIL_NAME:business-mail-service}
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      uri: "http://${MMN_CORE_CONFIG_HOST:localhost}:${MMN_CORE_CONFIG_PORT:8081}"
+      fail-fast: true
+      username: ${MMN_CORE_CONFIG_USER:user}
+      password: ${MMN_CORE_CONFIG_PASSWORD:Password1234}
+
+# mail:
+#  default-encoding: UTF-8
+#    host: smtp.gmail.com
+#    username: jhmailbot
+#    password: zjdfzgvnvheppctb
+#    port: 587
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#    protocol: smtp
+#    test-connection: false

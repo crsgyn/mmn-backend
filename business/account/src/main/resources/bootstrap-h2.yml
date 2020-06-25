@@ -1,0 +1,64 @@
+server:
+  port: 8181
+# Logging levels
+logging:
+  level:
+    org.springframework: ERROR
+    org.springframework.security: INFO
+    org.hibernate: ERROR
+
+# Hystrix timeout time (60 secs)
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+
+# Enable hystrix for feign clients
+feign:
+  hystrix.enabled: true
+  client.config.default.loggerLevel: full
+
+# Enable actuator endpoints
+management.endpoints.web.exposure.include: '*'
+
+spring.jpa.properties.hibernate:
+  current_session_context_class: thread
+  format_sql: true
+
+# USING MYSQL
+spring:
+
+  application:
+    name: ${MMN_BUSINESS_ACCOUNT_NAME:business-account-service}
+  profiles:
+    active: native
+  cloud:
+    config:
+      enabled: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:application;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database: H2
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create-drop
+          import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+
+# Eureka client configs
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: false
+    healthcheck:
+      enabled: false
+    register-with-eureka: false
+#security:
+#  oauth2:
+#    resource:
+#      user-info-uri: http://${MMN_BUSINESS_AUTH_HOST:localhost}:${MMN_BUSINESS_AUTH_PORT:8180}/${MMN_BUSINESS_AUTH_CONTEXTPATH:uaa}/users/current

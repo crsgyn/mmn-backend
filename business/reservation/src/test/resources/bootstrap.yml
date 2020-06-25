@@ -1,0 +1,15 @@
+# PAYMENT - TEST
+spring:
+  cloud:
+    config:
+      enabled: false
+
+spring.output.ansi.enabled: ALWAYS
+
+reservation.sor_url: "https://api.saveonuat.com"
+
+feign.client.config.default.connectTimeout: 160000000
+feign.client.config.default.readTimeout: 160000000
+
+spring.logging.pattern.console: "[%.4level] [%d{HH:mm:ss.SSS}] [%thread] [%logger{36}] - %msg%n"
+

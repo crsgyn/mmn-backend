@@ -1,0 +1,10 @@
+# TRANSLATION - TEST
+spring:
+  cloud:
+    config:
+      enabled: false
+
+spring.output.ansi.enabled: ALWAYS
+
+spring.logging.pattern.console: "[%.4level] [%d{HH:mm:ss.SSS}] [%thread] [%logger{36}] - %msg%n"
+
